@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import './App.css'; // Optional: Add custom styles
+import './App.css'; 
 
 function App() {
-  // State to manage the tasks
+
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [currentTaskIndex, setCurrentTaskIndex] = useState(null);
 
-  // Handle adding or editing a task
+  
   const addOrEditTask = () => {
-    if (newTask.trim() === '') return; // Prevent empty tasks
+    if (newTask.trim() === '') return; 
 
     if (isEditing) {
       const updatedTasks = tasks.map((task, i) =>
@@ -23,10 +23,10 @@ function App() {
       setTasks([...tasks, { text: newTask, completed: false }]);
     }
     
-    setNewTask(''); // Clear input field after adding or editing
+    setNewTask(''); 
   };
 
-  // Handle toggling task completion
+  
   const toggleTaskCompletion = (index) => {
     const updatedTasks = tasks.map((task, i) => 
       i === index ? { ...task, completed: !task.completed } : task
@@ -34,13 +34,13 @@ function App() {
     setTasks(updatedTasks);
   };
 
-  // Handle deleting a task
+  
   const deleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
   };
 
-  // Handle editing a task
+  
   const editTask = (index) => {
     setIsEditing(true);
     setNewTask(tasks[index].text);
